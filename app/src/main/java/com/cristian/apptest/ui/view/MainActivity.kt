@@ -44,14 +44,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadList() {
-        var userList: List<UserModel> = emptyList()
+        lateinit var userList: List<UserModel>
+        lateinit var userDetail: UserModel
         //Loading data
         viewModel.onCreate()
         println("Created")
         viewModel.users.observe(this) {
             userList = it
         }
+        viewModel.user.observe(this) {
+           userDetail = it
+        }
         println(userList)
+        println("Individual user: $userDetail")
+
     }
 
     private fun initRV() {
