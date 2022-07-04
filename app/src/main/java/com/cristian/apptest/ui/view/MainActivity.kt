@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cristian.apptest.databinding.ActivityMainBinding
+import com.cristian.apptest.domain.models.UserModel
 import com.cristian.apptest.ui.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding?.let {
             setContentView(it.root)
             it.button.setOnClickListener{
-                //loadList()
+                loadList()
                 //TODO: Deshabilitado por ahora
             }
         }
@@ -43,8 +44,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadList() {
+        var userList: List<UserModel> = emptyList()
         //Loading data
         viewModel.onCreate()
+        println("Created")
+        viewModel.users.observe(this) {
+            userList = it
+        }
+        println(userList)
     }
 
     private fun initRV() {
