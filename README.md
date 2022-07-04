@@ -14,7 +14,6 @@ This file will be updated when additional changes are implemented.
 | Room                   | ✗    |
 | Mappers                | ✓    |
 | Serializers            | ✓    |
-| Emmbeded Objects       | ✗    |
 | Navigation Components  | ✗    |
 | Kotlin Flows           | ✗    |
 | Coroutines             | ✓    |
