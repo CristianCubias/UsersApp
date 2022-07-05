@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             setContentView(it.root)
             it.button.setOnClickListener{
                 loadList()
-                //TODO: Deshabilitado por ahora
             }
         }
     }
@@ -55,8 +54,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.user.observe(this) {
            userDetail = it
         }
+
         println(userList)
         println("Individual user: $userDetail")
+        binding!!.txtView.text = "Check logcat"
 
     }
 

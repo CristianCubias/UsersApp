@@ -9,4 +9,19 @@ data class UserSerializer(
     val name: String,
     val username: String,
     val email: String,
+    //Working with nested JSON/Objects
+    val address: AddressSerializer,
+    val image_id: Int?
+)
+
+data class ImageSerializer(
+    val id: Int,
+    val url: String,
+    val title: String
+)
+
+data class AddressSerializer(
+    val street: String,
+    val suite: String,
+    val city: String,
 )
