@@ -17,5 +17,5 @@ This file will be updated when additional changes are implemented.
 | Navigation Components  | ✗    |
 | Kotlin Flows           | ✗    |
 | Coroutines             | ✓    |
-| Nested JSON/Data class | ✗    |
+| Nested JSON/Data class | ✓    |
 
