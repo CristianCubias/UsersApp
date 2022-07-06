@@ -11,7 +11,7 @@ This file will be updated when additional changes are implemented.
 | MVVM                   | ✓    |
 | Dagger Hilt            | ✓    |
 | Retrofit               | ✗    |
-| Room                   | ✗    |
+| Room                   | ✓    |
 | Mappers                | ✓    |
 | Serializers            | ✓    |
 | Navigation Components  | ✗    |
