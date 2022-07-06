@@ -2,6 +2,8 @@ package com.cristian.apptest.framework.requestmanager
 
 import com.cristian.apptest.data.ImageProvider
 import com.cristian.apptest.data.UserProvider
+import com.cristian.apptest.framework.requestmanager.utils.ImageSerializer
+import com.cristian.apptest.framework.requestmanager.utils.UserSerializer
 import javax.inject.Inject
 
 //This class is implemented temporarily to avoid the dependency errors,
@@ -19,7 +21,7 @@ class FakeRetrofitAPI @Inject constructor(){
         return ImageProvider().imageResponse
     }
 
-    suspend fun getImage(id: Int): ImageSerializer{
+    suspend fun getImage(id: Int): ImageSerializer {
         return ImageProvider().imageResponse.first { it.id == id }
     }
 

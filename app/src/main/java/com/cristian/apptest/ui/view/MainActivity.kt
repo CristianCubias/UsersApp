@@ -5,6 +5,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cristian.apptest.databinding.ActivityMainBinding
+import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 import com.cristian.apptest.ui.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,28 +44,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadList() {
         lateinit var userList: List<UserModel>
-        lateinit var userDetail: UserModel
+        lateinit var imageList: List<ImageModel>
         //Loading data
         viewModel.onCreate()
         println("Created")
         viewModel.users.observe(this) {
             userList = it
         }
-        viewModel.user.observe(this) {
-           userDetail = it
+        viewModel.images.observe(this) {
+            imageList = it
         }
-
-        println(userList)
-        println("Individual user: $userDetail")
-        binding!!.txtView.text = "Check logcat"
-
+        initRV(userList, imageList)
     }
 
-    private fun initRV() {
+    private fun initRV(userList: List<UserModel>, imageList: List<ImageModel>) {
         //Setting RecyclerView
         binding?.let {
             it.rvUsers.layoutManager = LinearLayoutManager(this)
-            adapter = UserRVAdapter()
+            adapter = UserRVAdapter(userList, imageList)
             it.rvUsers.adapter = adapter
         }
    }

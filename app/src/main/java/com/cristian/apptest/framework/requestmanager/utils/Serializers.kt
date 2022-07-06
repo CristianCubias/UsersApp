@@ -1,6 +1,4 @@
-package com.cristian.apptest.framework.requestmanager
-
-import com.cristian.apptest.data.UserProvider
+package com.cristian.apptest.framework.requestmanager.utils
 
 data class UserSerializer(
     //This data class will simulate the API Serializer.

@@ -1,9 +1,9 @@
 package com.cristian.apptest.framework.requestmanager
 
 import com.cristian.apptest.data.RemoteDataSource
-import com.cristian.apptest.data.UserProvider
 import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
+import com.cristian.apptest.framework.requestmanager.utils.toDomain
 
 class RemoteDataSourceImp constructor(private val api: FakeRetrofitAPI): RemoteDataSource {
     override suspend fun getUsers(): List<UserModel> {

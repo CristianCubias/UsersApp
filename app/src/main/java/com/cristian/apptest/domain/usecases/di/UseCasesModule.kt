@@ -15,7 +15,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 //This module is necessary because it provides the dependencies for use cases
 object UseCasesModule {
-
     //Passing the UserRepository instance to the AssignImageToUserUseCase constructor
     @Provides
     @Singleton
@@ -45,4 +44,41 @@ object UseCasesModule {
     @Singleton
     fun provideGetUserUseCase(userRepository: UserRepository) =
         GetUserUseCase(userRepository)
+
+    //Passing the UserRepository instance to the GetUsersFromLocalUseCase constructor
+    @Provides
+    @Singleton
+    fun provideGetUsersFromLocalUseCase(userRepository: UserRepository) =
+        GetUsersFromLocalUseCase(userRepository)
+
+    //Passing the UserRepository instance to the GetUserFromLocalUseCase constructor
+    @Provides
+    @Singleton
+    fun provideGetUserFromLocalUseCase(userRepository: UserRepository) =
+        GetUserFromLocalUseCase(userRepository)
+
+
+    //Passing the UserRepository instance to the GetImagesFromLocalUseCase constructor
+    @Provides
+    @Singleton
+    fun provideGetImagesFromLocalUseCase(userRepository: UserRepository) =
+        GetImagesFromLocalUseCase(userRepository)
+
+    //Passing the UserRepository instance to the GetImageFromLocalUseCase constructor
+    @Provides
+    @Singleton
+    fun provideGetImageFromLocalUseCase(userRepository: UserRepository) =
+        GetImageFromLocalUseCase(userRepository)
+
+    //Passing the UserRepository instance to the InsertUserIntoDatabaseUseCase constructor
+    @Provides
+    @Singleton
+    fun provideInsertUserIntoDatabaseUseCase(userRepository: UserRepository) =
+        InsertUserIntoDatabaseUseCase(userRepository)
+
+    //Passing the UserRepository instance to the InsertImageIntoDatabaseUseCase constructor
+    @Provides
+    @Singleton
+    fun provideInsertImageIntoDatabaseUseCase(userRepository: UserRepository) =
+        InsertImageIntoDatabaseUseCase(userRepository)
 }

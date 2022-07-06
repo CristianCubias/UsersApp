@@ -1,4 +1,4 @@
-package com.cristian.apptest.framework.requestmanager
+package com.cristian.apptest.framework.requestmanager.utils
 
 import com.cristian.apptest.domain.models.AddressModel
 import com.cristian.apptest.domain.models.ImageModel

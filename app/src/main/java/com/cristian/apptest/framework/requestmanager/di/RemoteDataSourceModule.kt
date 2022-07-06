@@ -12,8 +12,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDataSourceModule {
-
-
     //This function is used to provide the FakeRetrofitAPI instance to the RemoteDataSourceImp class
     @Provides
     @Singleton

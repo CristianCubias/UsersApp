@@ -1,7 +1,7 @@
 package com.cristian.apptest.data
 
-import com.cristian.apptest.framework.requestmanager.AddressSerializer
-import com.cristian.apptest.framework.requestmanager.UserSerializer
+import com.cristian.apptest.framework.requestmanager.utils.AddressSerializer
+import com.cristian.apptest.framework.requestmanager.utils.UserSerializer
 
 class UserProvider {
     //This is a class that simulates the response of an API.
