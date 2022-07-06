@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cristian.apptest.databinding.ItemUserBinding
 import javax.inject.Inject
 
-class UserRVAdapter @Inject constructor() :
+class UserRVAdapter :
     RecyclerView.Adapter<UserViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
        val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context))

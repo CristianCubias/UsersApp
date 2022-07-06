@@ -5,8 +5,7 @@ import com.cristian.apptest.data.UserProvider
 import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 
-class RemoteDataSourceImp: RemoteDataSource {
-    private val api = FakeRetrofitAPI()
+class RemoteDataSourceImp constructor(private val api: FakeRetrofitAPI): RemoteDataSource {
     override suspend fun getUsers(): List<UserModel> {
         val response = api.getUsers()
         return response.map { it.toDomain() }

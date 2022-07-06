@@ -8,7 +8,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class UserViewModel @Inject constructor(): ViewModel() {
+class UserViewModel @Inject constructor(
+    private val getUsersUseCase: GetUsersUseCase,
+    private val getUserUseCase: GetUserUseCase,
+    private val getImagesUseCase: GetImagesUseCase,
+    private val getImageUseCase: GetImageUseCase,
+    private val assignImageToUserUseCase: AssignImageToUserUseCase
+): ViewModel() {
     private val _users by lazy { MutableLiveData<List<UserModel>>() }
     private val _user by lazy { MutableLiveData<UserModel>() }
     val users: LiveData<List<UserModel>> get() = _users
@@ -16,11 +22,11 @@ class UserViewModel @Inject constructor(): ViewModel() {
 
     fun onCreate() {
         viewModelScope.launch {
-            val userList = GetUsersUseCase().invoke()
-            val imageList = GetImagesUseCase().invoke()
-            val finalUserList = AssignImageToUserUseCase().invoke(userList, imageList)
+            val userList = getUsersUseCase.invoke()
+            val imageList = getImagesUseCase.invoke()
+            val finalUserList = assignImageToUserUseCase.invoke(userList, imageList)
             //ID TEST
-            val userData = GetUserUseCase().invoke(5)
+            val userData = getUserUseCase.invoke(5)
             _users.value = finalUserList
             _user.value = userData
         }

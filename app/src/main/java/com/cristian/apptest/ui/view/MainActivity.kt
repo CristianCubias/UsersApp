@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     //ViewModel
     private val viewModel: UserViewModel by viewModels()
     //RecyclerView Adapter
-    @Inject
     lateinit var adapter: UserRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

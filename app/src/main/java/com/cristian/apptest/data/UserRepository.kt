@@ -3,9 +3,9 @@ package com.cristian.apptest.data
 import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 import com.cristian.apptest.framework.requestmanager.RemoteDataSourceImp
+import javax.inject.Inject
 
-class UserRepository() {
-    private val remoteDataSource = RemoteDataSourceImp()
+class UserRepository @Inject constructor(private val remoteDataSource: RemoteDataSource) {
     //This function is used to get the users list from the API
     suspend fun getUsers(): List<UserModel> {
         return remoteDataSource.getUsers()

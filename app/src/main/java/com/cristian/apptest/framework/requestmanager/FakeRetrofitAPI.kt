@@ -2,8 +2,11 @@ package com.cristian.apptest.framework.requestmanager
 
 import com.cristian.apptest.data.ImageProvider
 import com.cristian.apptest.data.UserProvider
+import javax.inject.Inject
 
-class FakeRetrofitAPI {
+//This class is implemented temporarily to avoid the dependency errors,
+// but it will be replaced by a real implementation
+class FakeRetrofitAPI @Inject constructor(){
     suspend fun getUsers(): List<UserSerializer> {
         return UserProvider().usersResponse
     }
