@@ -9,7 +9,7 @@ This file will be updated when additional changes are implemented.
 | ViewBinding            | ✓    |
 | LiveData               | ✓    |
 | MVVM                   | ✓    |
-| Dagger Hilt            | ✗    |
+| Dagger Hilt            | ✓    |
 | Retrofit               | ✗    |
 | Room                   | ✗    |
 | Mappers                | ✓    |
