@@ -10,7 +10,7 @@ This file will be updated when additional changes are implemented.
 | LiveData               | ✓    |
 | MVVM                   | ✓    |
 | Dagger Hilt            | ✓    |
-| Retrofit               | ✗    |
+| Retrofit               | ✓    |
 | Room                   | ✓    |
 | Mappers                | ✓    |
 | Serializers            | ✓    |
