@@ -14,19 +14,9 @@ class UserRepository @Inject constructor(
         return remoteDataSource.getUsers()
     }
 
-    //This function is used to get the individual user from the API
-    suspend fun getUser(id: Int): UserModel {
-        return remoteDataSource.getUser(id)
-    }
-
     //This function is used to get the images from the API
     suspend fun getImages(): List<ImageModel> {
         return remoteDataSource.getImages()
-    }
-
-    //This function is used to get the individual image from the API
-    suspend fun getImage(id: Int): ImageModel {
-        return remoteDataSource.getImage(id)
     }
 
     //This function is used to assign the image to the user

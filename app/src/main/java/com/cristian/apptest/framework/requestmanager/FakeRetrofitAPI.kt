@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 //This class is implemented temporarily to avoid the dependency errors,
 // but it will be replaced by a real implementation
-class FakeRetrofitAPI @Inject constructor(){
+class FakeRetrofitAPI {
     suspend fun getUsers(): List<UserSerializer> {
         return UserProvider().usersResponse
     }

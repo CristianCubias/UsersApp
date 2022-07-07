@@ -43,8 +43,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadList() {
-        lateinit var userList: List<UserModel>
-        lateinit var imageList: List<ImageModel>
+        var userList: List<UserModel> = emptyList()
+        var imageList: List<ImageModel> = emptyList()
         //Loading data
         viewModel.onCreate()
         println("Created")

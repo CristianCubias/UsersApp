@@ -39,8 +39,10 @@ class UserViewModel @Inject constructor(
             imageList.map { image ->
                 insertImageIntoDatabaseUseCase.invoke(image)
             }
+
             _users.value = getUsersFromLocalUseCase.invoke()
             _images.value = getImagesFromLocalUseCase.invoke()
         }
+
     }
 }

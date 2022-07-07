@@ -27,23 +27,11 @@ object UseCasesModule {
     fun provideGetImagesUseCase(userRepository: UserRepository) =
         GetImagesUseCase(userRepository)
 
-    //Passing the UserRepository instance to the GetImageUseCase constructor
-    @Provides
-    @Singleton
-    fun provideGetImageUseCase(userRepository: UserRepository) =
-        GetImageUseCase(userRepository)
-
     //Passing the UserRepository instance to the GetUsersUseCase constructor
     @Provides
     @Singleton
     fun provideUsersUseCase(userRepository: UserRepository) =
         GetUsersUseCase(userRepository)
-
-    //Passing the UserRepository instance to the GetUserUseCase constructor
-    @Provides
-    @Singleton
-    fun provideGetUserUseCase(userRepository: UserRepository) =
-        GetUserUseCase(userRepository)
 
     //Passing the UserRepository instance to the GetUsersFromLocalUseCase constructor
     @Provides

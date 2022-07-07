@@ -1,6 +1,5 @@
 package com.cristian.apptest.data
 
-import androidx.lifecycle.LiveData
 import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 

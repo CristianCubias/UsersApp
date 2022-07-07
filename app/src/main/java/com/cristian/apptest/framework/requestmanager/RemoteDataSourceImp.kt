@@ -5,26 +5,20 @@ import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 import com.cristian.apptest.framework.requestmanager.utils.toDomain
 
-class RemoteDataSourceImp constructor(private val api: FakeRetrofitAPI): RemoteDataSource {
+class RemoteDataSourceImp constructor(private val api: UsersAPI): RemoteDataSource {
     override suspend fun getUsers(): List<UserModel> {
-        val response = api.getUsers()
-        return response.map { it.toDomain() }
+        api.getUsers().body()?.let { list ->
+            return list.map { user -> user.toDomain() }
+        }
+        return emptyList()
         //.toDomain() converts each item in the list from UserSerializer to UserModel
     }
 
-    override suspend fun getUser(id: Int): UserModel {
-        val response = api.getUser(id)
-        return response.toDomain()
-    }
-
     override suspend fun getImages(): List<ImageModel> {
-        val response = api.getImages()
-        return response.map { it.toDomain() }
-    }
-
-    override suspend fun getImage(id: Int): ImageModel {
-        val response = api.getImage(id)
-        return response.toDomain()
+        api.getImages().body()?.let { list ->
+            return list.map { image -> image.toDomain() }
+        }
+        return emptyList()
     }
 
     override suspend fun assignImageToUser(
