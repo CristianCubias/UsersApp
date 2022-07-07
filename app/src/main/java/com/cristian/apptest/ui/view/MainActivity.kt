@@ -5,11 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cristian.apptest.databinding.ActivityMainBinding
-import com.cristian.apptest.domain.models.ImageModel
-import com.cristian.apptest.domain.models.UserModel
 import com.cristian.apptest.ui.viewmodel.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -18,17 +15,24 @@ class MainActivity : AppCompatActivity() {
     //ViewModel
     private val viewModel: UserViewModel by viewModels()
     //RecyclerView Adapter
-    lateinit var adapter: UserRVAdapter
+    private var _adapter: UserRVAdapter? = null
+    private val adapter: UserRVAdapter get() = _adapter!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Setting ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
         //Check if binding is not null
+        _adapter = UserRVAdapter()
         binding?.let {
             setContentView(it.root)
+            it.rvUsers.layoutManager = LinearLayoutManager(this)
+            it.rvUsers.adapter = adapter
             it.button.setOnClickListener{
-                loadList()
+                viewModel.onCreate()
+                viewModel.users.observe(this) { userList ->
+                    adapter.submitList(userList)
+                }
             }
         }
     }
@@ -41,28 +45,4 @@ class MainActivity : AppCompatActivity() {
             binding = null
         }
     }
-
-    private fun loadList() {
-        var userList: List<UserModel> = emptyList()
-        var imageList: List<ImageModel> = emptyList()
-        //Loading data
-        viewModel.onCreate()
-        println("Created")
-        viewModel.users.observe(this) {
-            userList = it
-        }
-        viewModel.images.observe(this) {
-            imageList = it
-        }
-        initRV(userList, imageList)
-    }
-
-    private fun initRV(userList: List<UserModel>, imageList: List<ImageModel>) {
-        //Setting RecyclerView
-        binding?.let {
-            it.rvUsers.layoutManager = LinearLayoutManager(this)
-            adapter = UserRVAdapter(userList, imageList)
-            it.rvUsers.adapter = adapter
-        }
-   }
 }

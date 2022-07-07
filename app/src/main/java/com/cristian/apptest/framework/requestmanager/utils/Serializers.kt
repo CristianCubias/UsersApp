@@ -1,25 +1,24 @@
 package com.cristian.apptest.framework.requestmanager.utils
 
+import com.squareup.moshi.Json
+
 data class UserSerializer(
-    //This data class will simulate the API Serializer.
-    //It does not have the @json annotation because it will only be used to test the mappers.
-    val id: Int,
-    val name: String,
-    val username: String,
-    val email: String,
-    //Working with nested JSON/Objects
-    val address: AddressSerializer,
-    val image_id: Int?
+    @Json(name = "id")      val id: Int,
+    @Json(name = "name")    val name: String,
+    @Json(name = "username")val username: String,
+    @Json(name = "email")   val email: String,
+    @Json(name = "address") val address: AddressSerializer,
+    val imageUrl: String?
 )
 
 data class ImageSerializer(
-    val id: Int,
-    val url: String,
-    val title: String
+    @Json(name = "id")      val id: Int,
+    @Json(name = "url")     val url: String,
+    @Json(name = "title")   val title: String
 )
 
 data class AddressSerializer(
-    val street: String,
-    val suite: String,
-    val city: String,
+    @Json(name = "street")  val street: String,
+    @Json(name = "suite")   val suite: String,
+    @Json(name = "city")    val city: String
 )

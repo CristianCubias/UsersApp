@@ -2,24 +2,36 @@ package com.cristian.apptest.ui.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cristian.apptest.databinding.ItemUserBinding
 import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 import javax.inject.Inject
 
-class UserRVAdapter @Inject constructor(private val userList: List<UserModel>, private val imageList: List<ImageModel>) :
-    RecyclerView.Adapter<UserViewHolder>() {
+//class UserRVAdapter (private val userList: List<UserModel>, private val imageList: List<ImageModel>) :
+//    RecyclerView.Adapter<UserViewHolder>() {
+
+//Implement ListAdapter to use the same logic for both RecyclerView and ListView
+class UserRVAdapter : ListAdapter<UserModel, UserViewHolder>(DiffCallback()) {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
        val binding = ItemUserBinding.inflate(LayoutInflater.from(parent.context))
         return UserViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
-        holder.render(userList[position], imageList[position])
+        holder.bind(getItem(position))
+    }
+}
+
+class DiffCallback : DiffUtil.ItemCallback<UserModel>() {
+    override fun areItemsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun getItemCount(): Int {
-        return userList.size
+    override fun areContentsTheSame(oldItem: UserModel, newItem: UserModel): Boolean {
+        return oldItem == newItem
     }
 }

@@ -5,7 +5,6 @@ data class UserModel(
     val name: String,
     val username: String,
     val email: String,
-    //Working with nested JSON/Objects
     val address: AddressModel,
-    var image_id: Int?,
+    var imageUrl: String?,
 )

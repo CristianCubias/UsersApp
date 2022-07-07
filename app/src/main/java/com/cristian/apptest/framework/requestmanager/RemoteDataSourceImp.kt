@@ -5,7 +5,7 @@ import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 import com.cristian.apptest.framework.requestmanager.utils.toDomain
 
-class RemoteDataSourceImp constructor(private val api: UsersAPI): RemoteDataSource {
+class RemoteDataSourceImp (private val api: UsersAPI): RemoteDataSource {
     override suspend fun getUsers(): List<UserModel> {
         api.getUsers().body()?.let { list ->
             return list.map { user -> user.toDomain() }
@@ -26,8 +26,8 @@ class RemoteDataSourceImp constructor(private val api: UsersAPI): RemoteDataSour
         imageList: List<ImageModel>
     ): List<UserModel> {
         return userList.map { user ->
-            val image = imageList.find { it.id == user.id }?.id
-            user.copy(image_id = image)
+            val image = imageList.find { it.id == user.id }?.url
+            user.copy(imageUrl = image)
         }
     }
 }

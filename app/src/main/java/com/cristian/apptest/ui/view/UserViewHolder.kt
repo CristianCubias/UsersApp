@@ -14,11 +14,11 @@ class UserViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHo
     private val emailTxtVw = binding.txtEmail
     private val imageVw = binding.ivUser
 
-    fun render(user: UserModel, image: ImageModel){
+    fun bind(user: UserModel){
         nameTxtVw.text = user.name
         emailTxtVw.text = user.email
         Glide.with(imageVw.context)
-            .load(image.url)
+            .load(user.imageUrl)
             .apply(RequestOptions().override(100,100))
             .centerCrop()
             .into(imageVw)

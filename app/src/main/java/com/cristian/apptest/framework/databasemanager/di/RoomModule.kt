@@ -2,8 +2,6 @@ package com.cristian.apptest.framework.databasemanager.di
 
 import android.content.Context
 import androidx.room.Room
-import com.cristian.apptest.data.LocalDataSource
-import com.cristian.apptest.framework.databasemanager.LocalDataSourceImp
 import com.cristian.apptest.framework.databasemanager.UsersDatabase
 import dagger.Module
 import dagger.Provides
@@ -23,6 +21,6 @@ object RoomModule {
             context,
             UsersDatabase::class.java,
             "users_database"
-        ).allowMainThreadQueries().build()
+        ).build()
     }
 }

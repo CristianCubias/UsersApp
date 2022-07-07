@@ -11,9 +11,8 @@ fun UserSerializer.toDomain() =
         name = name,
         username = username,
         email = email,
-        //Working with nested JSON/Objects
         address = address.toDomain(),
-        image_id = image_id,
+        imageUrl = imageUrl,
     )
 
 fun ImageSerializer.toDomain() =

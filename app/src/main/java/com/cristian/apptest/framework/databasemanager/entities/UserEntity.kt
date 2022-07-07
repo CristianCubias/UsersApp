@@ -7,12 +7,12 @@ import com.cristian.apptest.domain.models.AddressModel
 
 @Entity(tableName = "users")
 data class UserEntity(
-    @PrimaryKey()
+    @PrimaryKey
     val id: Int,
     val name: String,
     val username: String,
     val email: String,
     @Embedded
     val address: AddressModel,
-    var image_id: Int,
+    var imageUrl: String,
 )
