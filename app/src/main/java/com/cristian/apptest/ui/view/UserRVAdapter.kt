@@ -10,10 +10,6 @@ import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
 import javax.inject.Inject
 
-//class UserRVAdapter (private val userList: List<UserModel>, private val imageList: List<ImageModel>) :
-//    RecyclerView.Adapter<UserViewHolder>() {
-
-//Implement ListAdapter to use the same logic for both RecyclerView and ListView
 class UserRVAdapter : ListAdapter<UserModel, UserViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
