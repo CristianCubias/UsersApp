@@ -27,12 +27,18 @@ class UserViewModel @Inject constructor(
 
     fun onCreate() {
         viewModelScope.launch(Dispatchers.IO) {
-            assignImageToUserUseCase(getUsersUseCase(), getImagesUseCase()).forEach {
-                insertUserIntoDatabaseUseCase(it)
+            getUsersUseCase().collect { userList ->
+                getImagesUseCase().collect { imageList ->
+                    assignImageToUserUseCase(userList, imageList).forEach { user ->
+                        insertUserIntoDatabaseUseCase(user)
+                    }
+                }
             }
-            val data = getUsersFromLocalUseCase()
-            withContext(Dispatchers.Main) {
-                _users.value = data
+
+            getUsersFromLocalUseCase().collect { data ->
+                withContext(Dispatchers.Main) {
+                    _users.value = data
+                }
             }
         }
     }

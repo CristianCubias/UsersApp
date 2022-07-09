@@ -4,11 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.cristian.apptest.databinding.ItemUserBinding
-import com.cristian.apptest.domain.models.ImageModel
 import com.cristian.apptest.domain.models.UserModel
-import javax.inject.Inject
 
 class UserRVAdapter : ListAdapter<UserModel, UserViewHolder>(DiffCallback()) {
 
