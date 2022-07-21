@@ -22,8 +22,5 @@ class UserViewHolder(private val binding: ItemUserBinding) : RecyclerView.ViewHo
             .apply(RequestOptions().override(100,100))
             .centerCrop()
             .into(imageVw)
-        binding.root.setOnClickListener{
-           Toast.makeText(it.context, "Clicked user: ${user.name}", Toast.LENGTH_SHORT).show()
-        }
     }
 }

@@ -7,18 +7,25 @@ import com.cristian.apptest.framework.requestmanager.utils.toDomain
 
 class RemoteDataSourceImp (private val api: UsersAPI): RemoteDataSource {
     override suspend fun getUsers(): List<UserModel> {
-        api.getUsers().body()?.let { list ->
-            return list.map { user -> user.toDomain() }
+        println("Calling API")
+        val response = api.getUsers()
+        //Error handling
+        return if(response.isSuccessful){
+            response.body()?.map { it.toDomain() } ?: emptyList()
+        } else{
+            emptyList()
         }
-        return emptyList()
         //.toDomain() converts each item in the list from UserSerializer to UserModel
     }
 
     override suspend fun getImages(): List<ImageModel> {
-        api.getImages().body()?.let { list ->
-            return list.map { image -> image.toDomain() }
+        val response = api.getImages()
+        //Error handling
+        return if(response.isSuccessful){
+            response.body()?.map { it.toDomain() } ?: emptyList()
+        } else{
+            emptyList()
         }
-        return emptyList()
     }
 
     override suspend fun assignImageToUser(

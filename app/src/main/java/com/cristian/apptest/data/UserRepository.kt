@@ -26,7 +26,5 @@ class UserRepository (
     fun getUserFromLocal(id: Int): Flow<UserModel> = flow { emit(localDataSource.getUser(id)) }
 
     //This function is used to insert an user into the local database
-    suspend fun insertUser(user: UserModel) {
-        localDataSource.insertUser(user)
-    }
+    suspend fun insertUser(user: UserModel) { localDataSource.insertUser(user) }
 }
