@@ -14,8 +14,8 @@ This file will be updated when additional changes are implemented.
 | Room                   | ✓    |
 | Mappers                | ✓    |
 | Serializers            | ✓    |
-| Navigation Components  | ✗    |
-| Kotlin Flows           | ✗    |
+| Navigation Components  | ✓    |
+| Kotlin Flows           | ✓    |
 | Coroutines             | ✓    |
 | Nested JSON/Data class | ✓    |
 
